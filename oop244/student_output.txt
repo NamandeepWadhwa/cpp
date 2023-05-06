@@ -1,0 +1,70 @@
+Script started on Wed 03 Aug 2022 05:08:28 PM EDT
+==123201== Memcheck, a memory error detector
+==123201== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==123201== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==123201== Command: ms
+==123201== 
+An Invalid Book printout:
+><
+
+Enter the following: 
+[38;5;9mP1234[0m
+------------------------------
+Shelf No: P1234
+Title: Date: Author: You entered:
+><
+
+Enter the following: 
+[38;5;9mP123
+Seneca Handbook
+2022/13/17[0m
+------------------------------
+Shelf No: P123
+Title: Seneca Handbook
+Date: 2022/13/17
+Author: You entered:
+><
+
+Enter the following: 
+[38;5;9mP123
+The Story of My Experiments with Truth
+2022/7/17
+Mohandas Karamchand Gandhi[0m
+------------------------------
+Shelf No: ^C==123201== 
+==123201== Process terminating with default action of signal 2 (SIGINT)
+==123201==    at 0x580DB40: __read_nocancel (in /usr/lib64/libc-2.17.so)
+==123201==    by 0x5799D53: _IO_file_underflow@@GLIBC_2.2.5 (in /usr/lib64/libc-2.17.so)
+==123201==    by 0x579AF21: _IO_default_uflow (in /usr/lib64/libc-2.17.so)
+==123201==    by 0x579578D: getc (in /usr/lib64/libc-2.17.so)
+==123201==    by 0x4F3388C: syncgetc (stdio_sync_filebuf.h:225)
+==123201==    by 0x4F3388C: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::underflow() (stdio_sync_filebuf.h:133)
+==123201==    by 0x4F4146E: sgetc (streambuf:351)
+==123201==    by 0x4F4146E: sgetc (streambuf:345)
+==123201==    by 0x4F4146E: std::istream::sentry::sentry(std::istream&, bool) (istream.tcc:59)
+==123201==    by 0x4EF2F52: std::basic_istream<char, std::char_traits<char> >& std::operator>><char, std::char_traits<char> >(std::basic_istream<char, std::char_traits<char> >&, char*) (istream.cc:208)
+==123201==    by 0x403999: sdds::Publication::read(std::istream&) (Publication.cpp:173)
+==123201==    by 0x403197: sdds::Book::read(std::istream&) (Book.cpp:84)
+==123201==    by 0x404203: operator>>(std::istream&, Streamable&) (Streamable.cpp:12)
+==123201==    by 0x40214A: readBook(std::istream&) (ms4_tester_prof.cpp:145)
+==123201==    by 0x401A64: main (ms4_tester_prof.cpp:89)
+==123201== 
+==123201== HEAP SUMMARY:
+==123201==     in use at exit: 1 bytes in 1 blocks
+==123201==   total heap usage: 5 allocs, 4 frees, 72,708 bytes allocated
+==123201== 
+==123201== 1 bytes in 1 blocks are still reachable in loss record 1 of 1
+==123201==    at 0x4C2AC38: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==123201==    by 0x402EDB: sdds::Book::operator=(sdds::Book const&) (Book.cpp:27)
+==123201==    by 0x4018D6: main (ms4_tester_prof.cpp:73)
+==123201== 
+==123201== LEAK SUMMARY:
+==123201==    definitely lost: 0 bytes in 0 blocks
+==123201==    indirectly lost: 0 bytes in 0 blocks
+==123201==      possibly lost: 0 bytes in 0 blocks
+==123201==    still reachable: 1 bytes in 1 blocks
+==123201==         suppressed: 0 bytes in 0 blocks
+==123201== 
+==123201== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+Script done on Wed 03 Aug 2022 05:09:12 PM EDT
